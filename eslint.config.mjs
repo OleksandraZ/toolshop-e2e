@@ -22,7 +22,6 @@ export default tseslint.config(
   { ...playwright.configs['flat/recommended'], files: ['tests/**/*.ts'] },
   // Upgraded from 'warn': warnings don't fail `npm run lint`, so hard waits
   // and tests without assertions would otherwise pass CI.
-
   {
     files: ['tests/**/*.ts'],
     rules: {
