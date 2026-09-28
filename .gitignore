@@ -1,0 +1,16 @@
+
+# Playwright
+node_modules/
+/test-results/
+/playwright-report/
+/blob-report/
+/playwright/.cache/
+/playwright/.auth/
+
+# Secrets and local env
+.env
+.DS_Store
+
+/docs
+PROGRESS.md
+CLAUDE.md
