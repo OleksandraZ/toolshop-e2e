@@ -8,6 +8,9 @@ export default defineConfig({
   retries: process.env.CI ? 1 : 0, // a retry is evidence of flakiness, not a fix
   workers: process.env.CI ? 2 : 4, // shared public site → keep it low
   reporter: [['list'], ['html', { open: 'never' }]],
+  expect: {
+    toPass: { timeout: 10_000 }, // toPass has no own timeout by default (would run until the 30 s test timeout)
+  },
   use: {
     baseURL: env.baseUrl,
     testIdAttribute: 'data-test', // getByTestId() now looks at data-test="…"
