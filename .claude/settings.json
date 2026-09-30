@@ -1,0 +1,15 @@
+{
+  "hooks": {
+    "PostToolUse": [
+      {
+        "matcher": "Edit|MultiEdit|Write",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "cd \"$CLAUDE_PROJECT_DIR\" && { npm run -s typecheck 1>&2 && npm run -s lint 1>&2; } || exit 2"
+          }
+        ]
+      }
+    ]
+  }
+}
