@@ -56,3 +56,21 @@ test('search result opens details page with the same name and price', async ({ p
   const expectedPriceTrimmed = expectedPrice.replace('$', '');
   await expect(page.getByTestId('unit-price')).toHaveText(expectedPriceTrimmed);
 });
+
+test('search of non-existing product gives "no results" message', async ({ page }) => {
+  const term = 'xyz-no-such-tool';
+
+  await page.goto('/');
+  await expect(page.getByTestId('product-name')).not.toHaveCount(0);
+
+  await page.getByTestId('search-query').fill(term);
+  await page.getByTestId('search-submit').click();
+  await expect(page.getByTestId('search-caption')).toContainText(term);
+
+  // S-03: Search with no matches - empty-results message; no product cards
+  // test-id used - it stays the same in every language
+  await expect(page.getByTestId('no-results')).toBeVisible();
+  // Message first: it only appears once the search has finished with no matches.
+  // Then the count: 0 cards could also mean "still loading".
+  await expect(page.getByTestId('product-name')).toHaveCount(0);
+});
