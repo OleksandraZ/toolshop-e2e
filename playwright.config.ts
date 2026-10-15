@@ -18,5 +18,8 @@ export default defineConfig({
     screenshot: 'only-on-failure',
     video: 'retain-on-failure',
   },
-  projects: [{ name: 'chromium', use: { ...devices['Desktop Chrome'] } }],
+  projects: [
+    { name: 'unit', testDir: './tests/unit' },                                          // no browser settings
+    { name: 'chromium', use: { ...devices['Desktop Chrome'] }, testIgnore: ['**/unit/**'] },
+  ],
 });

@@ -1,4 +1,5 @@
-/** Converts UI text like "$14.15" into 14.15. Throws on anything unparseable. */
+/** Converts US-format UI text like "$1,299.00" into 1299. Throws if no number is found.
+ *  Not for European formats ("1.299,00 €"): they parse silently wrong. */
 export function parsePrice(text: string): number {
   const value = Number.parseFloat(text.replace(/[^0-9.]/g, ''));
   if (Number.isNaN(value)) {
