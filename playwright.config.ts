@@ -19,7 +19,8 @@ export default defineConfig({
     video: 'retain-on-failure',
   },
   projects: [
-    { name: 'unit', testDir: './tests/unit' },                                          // no browser settings
-    { name: 'chromium', use: { ...devices['Desktop Chrome'] }, testIgnore: ['**/unit/**'] },
+    { name: 'unit', testDir: './tests/unit' },
+    { name: 'practice', testDir: './tests/practice', use: { ...devices['Desktop Chrome'] } },
+    { name: 'chromium', use: { ...devices['Desktop Chrome'] }, testIgnore: ['**/unit/**', '**/practice/**'] },
   ],
 });

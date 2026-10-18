@@ -16,3 +16,5 @@ node_modules/
 /docs
 PROGRESS.md
 CLAUDE.md
+
+tests/practice/
