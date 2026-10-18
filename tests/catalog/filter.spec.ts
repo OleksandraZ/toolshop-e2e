@@ -16,7 +16,7 @@ for (const { category, expected } of cases) {
     const names = page.getByTestId('product-name');
     await expect(async () => {
       const shown = (await names.allTextContents()).map((t) => t.trim());
-      // correctness: every shown product is a known plier (on failure: names the intruder)
+      // correctness: every shown product is a known one (on failure: names the intruder)
 
       for (const name of shown) expect(expected).toContain(name);
 

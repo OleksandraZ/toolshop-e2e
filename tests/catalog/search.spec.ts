@@ -57,7 +57,7 @@ test('search result opens details page with the same name and price', async ({ p
   await expect(page.getByTestId('unit-price')).toHaveText(expectedPriceTrimmed);
 });
 
-test('search of non-existing product gives "no results" message', async ({ page }) => {
+test('search of non-existing product gives "no results" message (S-03)', async ({ page }) => {
   const term = 'xyz-no-such-tool';
 
   await page.goto('/');

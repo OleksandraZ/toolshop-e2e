@@ -12,6 +12,11 @@ for (const { sortingName, direction, scenario } of cases) {
     const prices = page.getByTestId('product-price');
     await expect(prices).not.toHaveCount(0);
 
+    const before = (await prices.allTextContents()).map(parsePrice);
+    expect(before, 'precondition: list must not already be sorted').not.toEqual(
+      sortNumbers(before, direction),
+    );
+
     await page.getByTestId('sort').selectOption({ label: sortingName });
 
     await expect(async () => {
